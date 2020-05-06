@@ -12,7 +12,7 @@ pip install selenium
 
 Después, selenium requiere un driver para interactuar con el browser. Por lo que tenderemos que proceder a instalar la misma versión de el browser que estemos usando. [Instale aqui](https://www.selenium.dev/documentation/en/webdriver/driver_requirements/#quick-reference) 
 
-##Empezando
+## Empezando
 Una vez que ya hemos instalado todo, procederemos a importar todas las librerias de selenium. Luego crearemos una instancia de nuestro webdriver, le decimos que vamos a trabajar con Chrome, y le pasamos el archivo.exe que hemos descargado anteriormente.
 
 ```python
