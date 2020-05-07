@@ -50,3 +50,4 @@ driver.quit() # Cierra el webdriver
 ```
 
 Usamos el módulo time por si la página carga lento, que no empieze a interactuar con elementos que no existen y no salte ningún error.
+Esto es una mala práctica pero veremos más adelante como se hace correctamente.
