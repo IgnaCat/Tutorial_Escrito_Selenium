@@ -23,13 +23,12 @@ driver = webdriver.Chrome('chromedriver.exe') # Especificamos la ruta en donde s
 ```
 
 Ahora lo que vamos a hacer es decirle al webdriver que página vamos a usar, en este caso sera https://www.itsv.edu.ar/itsv/index.php y lo que hará es llevarnos a la misma.
+
 Una vez cargada, podemos acceder al DOM usando métodos del objecto driver recién creado.
 La mejor manera es abriendo el web browser y usar las herramientas de desarrollador para inspeccionar el contenido de la página.
 
-Lo que queremos hacer es que el script escriba en el buscador "formularios" y que luego se apriete el botón de buscar para ver los resultados. Entonces vamos a empezar a identificar los elementos usando lo mencionado anteriormente(click derecho, inspeccionar), donde podemos ver que el elemento <input> tiene un atributo name="searchword". Luego usaremos el método find_element_by_name() pasandole como parámetro nombre de nuestro input y le diremos que le escriba "formularios", a través del método click()
+Lo que queremos hacer es que el script escriba en el buscador "formularios" y que luego se apriete el botón de buscar para ver los resultados. Entonces vamos a empezar a identificar los elementos usando lo mencionado anteriormente(click derecho, inspeccionar), donde podemos ver que el elemento ```<input>``` tiene un atributo ```name="searchword"```. Luego usaremos el método ```find_element_by_name()``` pasandole esto como parámetro y le diremos que le escriba "formularios", a través del método ```send_keys()```.
 Después usando el mismo procedimiento, haremos lo mismo con el botón de buscar y le diremos que haga click.
-
-Usaremos el módulo time por si la página carga lento, que no empieze a interactuar con elementos que no existen y no salte ningún error.
 
 Quedaría algo así:
 
@@ -49,3 +48,5 @@ search_btn.submit()
 driver.quit() # Cierra el webdriver
 
 ```
+
+Usamos el módulo time por si la página carga lento, que no empieze a interactuar con elementos que no existen y no salte ningún error.
