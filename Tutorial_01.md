@@ -10,7 +10,7 @@ Primero deberemos instalar selenium usando el gestor de paquetes de python (pip)
 pip install selenium
 </pre>
 
-Después, selenium requiere un driver para interactuar con el browser. Por lo que tenderemos que proceder a instalar la misma versión que estemos usando en nuestra computadora. [Instale aqui](https://www.selenium.dev/documentation/en/webdriver/driver_requirements/#quick-reference) 
+Después, selenium requiere un driver para interactuar con el browser, por lo que tenderemos que proceder a instalar la misma versión que estemos usando en nuestra computadora. [Instale aqui](https://www.selenium.dev/documentation/en/webdriver/driver_requirements/#quick-reference) 
 
 ## Empezando
 Una vez que ya hemos instalado todo, procederemos a importar todas las librerias de selenium. Luego crearemos una instancia de nuestro webdriver, le decimos que vamos a trabajar con Chrome, y le pasamos el archivo.exe que hemos descargado anteriormente.
@@ -18,7 +18,7 @@ Una vez que ya hemos instalado todo, procederemos a importar todas las librerias
 ```python
 from selenium import webdriver
 
-driver = webdriver.Chrome('chromedriver.exe') # Especificamos la ruta en donde se encuentra nuestro .exe
+driver = webdriver.Chrome('/PATH/chromedriver.exe') # Especificamos el directorio en donde se encuentra nuestro .exe
 
 ```
 
@@ -51,3 +51,6 @@ driver.quit() # Cierra el webdriver
 
 Usamos el módulo time por si la página carga lento, que no empieze a interactuar con elementos que no existen y no salte ningún error.
 Esto es una mala práctica pero veremos más adelante como se hace correctamente.
+
+## Ejemplo Villada
+Ahora seguiremos con lo hecho anteriormente, pero le agregaremos que después de buscar, apriete en "Formularios para el Alumno" y nos escriba en la terminal los distintos tipos de formulario que existen.
