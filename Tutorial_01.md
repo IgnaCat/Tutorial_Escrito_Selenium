@@ -56,6 +56,7 @@ Esto es una mala práctica pero veremos más adelante como se hace correctamente
 Ahora seguiremos con lo hecho anteriormente, pero le agregaremos que después de buscar, apriete en "Formularios para el Alumno" y nos escriba en la terminal los distintos tipos de formulario que existen.
 
 
+
 ## Waits
 Como dijimos anteriormente, usar el time.sleep no es la mejor manera para esperar a que carguen ciertos elementos de nuestra página web, ya que estamos esperano un tiempo fijo, osea estamos pausando la ejecucíon del script unos segundos.
 Para eso Selenium Webdiver nos provee dos tipos de waits, el implicit wait y el explicit wait, para que la ejecución sea mas rápida  y dinámica. 
@@ -77,6 +78,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-btn = WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Siguiente')]"))).click()
+btn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Siguiente')]")))
 # Esperamos 5 segundos a que el botón sea clickable
 ```
