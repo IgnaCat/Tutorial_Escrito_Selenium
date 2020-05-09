@@ -54,3 +54,29 @@ Esto es una mala práctica pero veremos más adelante como se hace correctamente
 
 ## Ejemplo Villada
 Ahora seguiremos con lo hecho anteriormente, pero le agregaremos que después de buscar, apriete en "Formularios para el Alumno" y nos escriba en la terminal los distintos tipos de formulario que existen.
+
+
+## Waits
+Como dijimos anteriormente, usar el time.sleep no es la mejor manera para esperar a que carguen ciertos elementos de nuestra página web, ya que estamos esperano un tiempo fijo, osea estamos pausando la ejecucíon del script unos segundos.
+Para eso Selenium Webdiver nos provee dos tipos de waits, el implicit wait y el explicit wait, para que la ejecución sea mas rápida  y dinámica. 
+El implicit wait espera a q el doom cargue un elemento en una cantidad n de tiempo antes de que te tire un exception error.
+
+Su utilización sería asi:
+
+```python
+driver.implicitly_wait(5) # Espere 5 segundos
+
+```
+
+El explicit wait no solo espera a q el elemento exista, sino q tenga una condición dada antes de tirar un ElementNotVisibleException error, es decir que el webdriver espera por cierta condición.
+
+Su implementación sería algo así:
+
+```python
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+btn = WebDriverWait(self.driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Siguiente')]"))).click()
+# Esperamos 5 segundos a que el botón sea clickable
+```
