@@ -55,6 +55,32 @@ Esto es una mala práctica pero veremos más adelante como se hace correctamente
 ## Ejemplo Villada
 Ahora seguiremos con lo hecho anteriormente, pero le agregaremos que después de buscar, apriete en "Formularios para el Alumno" y nos escriba en la terminal los distintos tipos de formulario que existen.
 
+Seguiriamos usando el mismo procedimiento dicho anteriormente y nos quedaría algo asi:
+
+```python
+import time
+from selenium import webdriver
+
+driver = webdriver.Chrome('chromedriver.exe')
+driver.get('https://www.itsv.edu.ar/itsv/index.php/')
+
+search_box = driver.find_element_by_name('searchword')
+search_box.send_keys('formularios')
+search_btn = driver.find_element_by_name('search')
+search_btn.submit()
+
+form_link = driver.find_element_by_link_text('Formularios para el Alumno').click()
+time.sleep(2)
+article = driver.find_element_by_xpath('//*[@id="art-main"]/div/div[1]/div/div/div/div/article/div/div')
+forms_ul = article.find_elements_by_tag_name('ul')
+for form in forms_ul:
+    form_li = form.find_element_by_tag_name('li')
+    form_strong = form_li.find_element_by_tag_name('strong')
+    print(form_strong.text)
+
+driver.quit()
+
+```
 
 
 ## Waits
@@ -78,7 +104,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-btn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Siguiente')]")))
+search_btn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.NAME, 'search')))
 # Esperamos 5 segundos a que el botón sea clickable
 ```
 
@@ -88,7 +114,21 @@ Los asserts son verificaciones, pero tienen una diferencia, cuando algo no funci
 Los asserts que trae Selenium Webdriver son algo asi:
 
 ```python
-assert elemento.text == 'Ejemplo'
-assert elemento.tag_name == 'a'
+assert form_strong.text.startswith == 'Formulario'
+assert form_strong.tag_name == 'strong'
+
+```
+
+## Teclas Especiales
+Selenium Webdriver nos proporciona la "ventaja" de poder usar las teclas especiales, no simplemente las alfanumericas del teclado.
+Con esto un ejemplo de lo que podemos hacer, es cuando buscamos formularios en el buscador, que se aprete enter, en vez de tener que identficar el botón de buscar y de hacer que haga click. Entonces lo que estaríamos haciendo es ahorrar un poco más de código y simplificarlo.
+
+Seria:
+
+```python
+from selenium.webdriver.common.keys import Keys
+
+search_box = driver.find_element_by_name('searchword')
+search_box.send_keys('formularios' + Keys.ENTER)
 
 ```
