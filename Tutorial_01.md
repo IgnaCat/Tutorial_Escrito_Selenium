@@ -81,3 +81,14 @@ from selenium.webdriver.common.by import By
 btn = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.XPATH, "//button[contains(text(),'Siguiente')]")))
 # Esperamos 5 segundos a que el botón sea clickable
 ```
+
+## Asserts
+Los asserts son verificaciones, pero tienen una diferencia, cuando algo no funciona se corta la ejecución del script. Entonces, lo que hace es devolverte un true o un false, si es true la prueba sigue, si es false se corta.
+
+Los asserts que trae Selenium Webdriver son algo asi:
+
+```python
+assert elemento.text == 'Ejemplo'
+assert elemento.tag_name == 'a'
+
+```
