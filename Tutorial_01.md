@@ -114,7 +114,7 @@ Los asserts son verificaciones, pero tienen una diferencia, cuando algo no funci
 Los asserts que trae Selenium Webdriver son algo asi:
 
 ```python
-assert form_strong.text.startswith == 'Formulario'
+assert form_strong.text.startswith('Formulario')
 assert form_strong.tag_name == 'strong'
 
 ```
@@ -132,3 +132,35 @@ search_box = driver.find_element_by_name('searchword')
 search_box.send_keys('formularios' + Keys.ENTER)
 
 ```
+
+
+Entonces la totalidad del código usando los diferentes temas explicados y el ejemplo del villada, haría que el el script quedara asi:
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+driver = webdriver.Chrome('chromedriver.exe')
+driver.get('https://www.itsv.edu.ar/itsv/index.php/')
+
+search_box = driver.find_element_by_name('searchword')
+search_box.send_keys('formularios' + Keys.ENTER)
+
+form_link = WebDriverWait(driver, 5).until(EC.element_to_be_clickable((By.LINK_TEXT, 'Formularios para el Alumno'))).click()
+driver.implicitly_wait(3)
+article = driver.find_element_by_xpath('//*[@id="art-main"]/div/div[1]/div/div/div/div/article/div/div')
+forms_ul = article.find_elements_by_tag_name('ul')
+for form in forms_ul:
+    form_li = form.find_element_by_tag_name('li')
+    form_strong = form_li.find_element_by_tag_name('strong')
+    print(form_strong.text)
+    assert form_strong.text.startswith('Formulario')
+    assert form_strong.tag_name == 'strong'
+
+driver.quit()
+
+```
+
