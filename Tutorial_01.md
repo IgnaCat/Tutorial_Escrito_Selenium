@@ -164,3 +164,4 @@ driver.quit()
 
 ```
 
+Continue con el tutorial en la [Clase 2](Tutorial02.md)
