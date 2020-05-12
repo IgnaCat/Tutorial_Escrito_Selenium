@@ -6,7 +6,7 @@ Primero en el ```main.py``` importaremos ```unittest``` (no hay que instalar nad
 
 También habrá dos documentos más, el ```page.py``` y el ```locator.py```. En el primero usaríamos el modelo pageObjects, en donde se refiere a crear objetos por cada página de nuestra web. Y el segundo file se encontrarán todas las locaciones de nuestro elementos.
 
-El ```main.py``` nos quedaría algo así:
+* El ```main.py``` nos quedaría algo así:
 
 ```python
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
 ```
 
-El ```page.py``` nos quedaría así:
+* El ```page.py``` nos quedaría así:
 
 ```python
 
@@ -72,7 +72,7 @@ class SearchResultsPage(BasePage):
 
 ```
 
-Y el ```locator.py``` quedaría así:
+* Y el ```locator.py``` quedaría así:
 
 ```python
 
