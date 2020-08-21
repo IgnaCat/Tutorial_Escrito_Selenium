@@ -3,6 +3,8 @@
 Selenium Python nos provee una simple API para automatizar paginas web.
 Con esta podemos acceder a todas las funcionalidades que nos provee Selenium Webdriver, con la cual podemos usar browsers tales como chorme, firefox, etc.
 
+Link del video de Youtube: https://www.youtube.com/watch?v=_qKeCob0snI
+
 ## Instalación
 Primero deberemos instalar selenium usando el gestor de paquetes de python (pip)
 
